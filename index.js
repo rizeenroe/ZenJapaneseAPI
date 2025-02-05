@@ -62,22 +62,39 @@ app.get('/kanji/:level', (req, res) => {
 
 })
 
-// app.post('/system/:type', (req, res) => {
-//     const { type } = req.params; 
-    
-//     console.log('this is running');
-    
+app.get('/random', (req, res) => {
+    const datasets = [
+        { name: 'hiragana', data: hiragana },
+        { name: 'katakana', data: katakana },
+        { name: 'kanji_jouyou', data: kanjiJouyou },
+        { name: 'kanji_kyouiku', data: kanjiKyouiku },
+        { name: 'kanji_wanikani', data: kanjiWaniKani }
+    ];
 
-//     if(!type){
-//         res.status(418).send({
-//             message: 'provide a type'
-//        })
-//     }
-        
-//     res.send({
-//         message: `this message type is ${type}`
-//     })
-// })
+    const nonEmptyDatasets = datasets.filter(dataset => dataset.data && Object.keys(dataset.data).length > 0);
+
+    if (nonEmptyDatasets.length === 0) {
+        return res.status(400).send({
+            error: "No valid datasets available"
+        });
+    }
+    const randomDataset = nonEmptyDatasets[Math.floor(Math.random() * nonEmptyDatasets.length)];
+    let randomItem;
+    if (randomDataset.name.startsWith('kanji')) {
+        const kanjiKeys = Object.keys(randomDataset.data);
+        randomItem = randomDataset.data[kanjiKeys[Math.floor(Math.random() * kanjiKeys.length)]];
+        randomItem.character = kanjiKeys[Math.floor(Math.random() * kanjiKeys.length)];
+    } else {
+        randomItem = randomDataset.data[Math.floor(Math.random() * randomDataset.data.length)];
+    }
+    res.status(200).send({
+        dataset: randomDataset.name,
+        random: randomItem
+    });
+});
+
+
+
 
 
 //testing code
