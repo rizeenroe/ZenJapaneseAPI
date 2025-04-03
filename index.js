@@ -15,7 +15,7 @@ app.use(express.json())
 
 app.get('/', (req, res) => {
     res.status(200).send({
-        availablePOST: '/hiragana, '
+        availablePOST: '/hiragana, /katakana, /kanji/:level, /random'
     })   
 })
 
@@ -41,10 +41,8 @@ app.get('/katakana', (req, res) => {
 })
 
 app.get('/kanji/:level', (req, res) => { 
-    
     const level = req.params.level.toLowerCase();
     let kanji;
-
     if (level === "jouyou") {
         kanji = kanjiJouyou
     }else if(level === "kyouiku"){
@@ -54,8 +52,6 @@ app.get('/kanji/:level', (req, res) => {
     }else {
         return res.status(400).send({ error: "Invalid kanji level" }); 
     }
-
-    
     res.status(200).send({
         kanji: kanji
     })

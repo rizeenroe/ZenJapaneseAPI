@@ -1,0 +1,45 @@
+{
+  "はじめまして": {
+    "id": 1,
+    "meaning": [
+      "how do you do?",
+      "nice to meet you"
+    ],
+    "usage": "Typically used when meeting someone for the first time.",
+    "examples": [
+      "はじめまして、ジョンです",
+      "はじめまして、マリアです。"
+    ],
+    "images": [
+      ""
+    ]
+  },
+  "わたし": {
+    "id": 2,
+    "meaning": [
+      "I",
+      "Me"
+    ],
+    "usage": "A neutral way to say 'I' in Japanese, used by both genders.",
+    "examples": [
+      "わたしは学生です、わたしはがくせいです"
+    ],
+    "images": [
+      ""
+    ]
+  },
+  "ぼく": {
+    "id": 3,
+    "meaning": [
+      "I (informally used by males)"
+    ],
+    "usage": "Used mainly by males in informal situations.",
+    "examples": [
+      "ぼくは日本人です",
+      "ぼくはがくせいです"
+    ],
+    "images": [
+      ""
+    ]
+  }
+}
